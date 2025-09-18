@@ -51,7 +51,13 @@ public class AddCityFragment extends DialogFragment {
         EditText editCityName = view.findViewById(R.id.edit_text_city_text);
         EditText editProvinceName = view.findViewById(R.id.edit_text_province_text);
 
+        if (getArguments() != null) {
+             String city = getArguments().getString("city","");
+             String province = getArguments().getString("province","");
 
+             editCityName.setText(city);
+             editProvinceName.setText(province);
+        }
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
         return builder
                 .setView(view)
