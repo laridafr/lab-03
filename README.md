@@ -6,9 +6,9 @@
 - **CCID:** `fredrika`
 
 ## References and Resources
-https://developer.android.com/reference/android/os/Bundle
-https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
-https://stackoverflow.com/questions/45791244/call-same-fragment-with-different-data
+- https://developer.android.com/reference/android/os/Bundle
+- https://stackoverflow.com/questions/9245408/best-practice-for-instantiating-a-new-android-fragment
+- https://stackoverflow.com/questions/45791244/call-same-fragment-with-different-data
 
 
 ## Verbal Collaboration
