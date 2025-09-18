@@ -15,11 +15,12 @@ import androidx.fragment.app.DialogFragment;
 public class AddCityFragment extends DialogFragment {
     interface AddCityDialogListener {
         void addCity(City city);
+        void updateCity(City city, int position);
     }
 
     private AddCityDialogListener listener;
 
-    public static AddCityFragment newInstance(String city, String province) {
+    public static AddCityFragment newInstance(String city, String province, int position) {
 //        Idea taken from https://stackoverflow.com/questions/36113134/understanding-the-fragment-newinstance-method
 //        Authored by: Arkadiusz Konior
 //        Taken by: Fredrik Larida
@@ -28,6 +29,7 @@ public class AddCityFragment extends DialogFragment {
         Bundle args = new Bundle();
         args.putString("city", city);
         args.putString("province", province);
+        args.putInt("position", position);
         newFragment.setArguments(args);
 
         return newFragment;
@@ -63,10 +65,16 @@ public class AddCityFragment extends DialogFragment {
                 .setView(view)
                 .setTitle("Add a city")
                 .setNegativeButton("Cancel", null)
-                .setPositiveButton("Add", (dialog, which) -> {
+                .setPositiveButton("OK", (dialog, which) -> {
                     String cityName = editCityName.getText().toString();
                     String provinceName = editProvinceName.getText().toString();
-                    listener.addCity(new City(cityName, provinceName));
+
+                    if (getArguments() != null) {
+                        int pos = getArguments().getInt("position");
+                        listener.updateCity(new City(cityName, provinceName), pos);
+                    }else {
+                        listener.addCity(new City(cityName, provinceName));
+                    }
                 })
                 .create();
     }
